@@ -1,0 +1,95 @@
+@import "keysframes";
+
+$RED: #ED5151;
+$BLUE: #4969DF;
+$YELLOW: #FFF079;
+$GREY: #D0D0D0;
+$GREEN: #3BDB90;
+$dark-blue: #2A2C3C;
+$light-blue: #3D3F4D;
+$red: #C01E2E;
+$light-grey: #d0d0d0;
+$MAIN_GRADIENT: linear-gradient(to bottom, #C01E2E, #2A2C3C 50%, #2A2C3C);
+
+@mixin fa-spin($duration: 2s) {
+  animation: fa-spin $duration infinite linear;
+}
+
+@mixin rotate($rotation) {
+  transform: rotate($rotation);
+}
+
+@mixin flex($direction: column) {
+  display: flex;
+  flex-direction: $direction;
+}
+
+@mixin flex-align($h: center, $v: center) {
+  align-items: $h;
+  justify-content: $v;
+}
+
+@mixin image-set($name, $extension) {
+  background-image: url("#{$name}.#{$extension}");
+  background-image: image-set(url("#{$name}.#{$extension}") 1x, url("#{$name}@2x.#{$extension}") 2x, url("#{$name}@3x.#{$extension}") 3x);
+  //background-image: -webkit-image-set(url("#{$name}.#{$extension}") 1x, url("#{$name}@2x.#{$extension}") 2x, url("#{$name}@3x.#{$extension}") 3x);
+  background-repeat: no-repeat;
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+// styles for multiLine (default 2) line '...'
+@mixin multi-line-ellipsis ($lineHeight: 24px, $line: 2, $fontSize: 16px, $backgroundColor: white) {
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $line;
+  text-align: justify;
+  margin-right: $fontSize * -1;
+  padding-right: $fontSize;
+
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 2px;
+    bottom: 0;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: 2px;
+    width: $fontSize;
+    height: $fontSize;
+    margin-top: 4px;
+    background: $backgroundColor;
+  }
+}
+
+@mixin box-sizing($box-sizing) {
+  box-sizing: $box-sizing;
+}
+
+@mixin transition-property($transition) {
+  transition-property: $transition;
+}
+
+@mixin transition-duration($duration) {
+  transition-duration: $duration;
+}
+
+@mixin transition-timing-function($timing){
+  transition-timing-function: $timing;
+}
+
+@mixin absoluteFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
